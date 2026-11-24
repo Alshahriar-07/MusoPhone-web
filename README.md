@@ -3,7 +3,7 @@
 <br/>
 <br/>
 
-<img src="MusoPhoneIcon.png" alt="MusoPhone app icon" width="200" />
+<img src="assets/icon.png" alt="MusoPhone app icon" width="200" />
 
 # MusoPhone
 
@@ -31,7 +31,7 @@
 
 <div align="center">
 
-<img src="MusoPhoneBanner.png" alt="MusoPhone banner" width="100%" />
+<img src="assets/MusoPhoneBanner.png" alt="MusoPhone banner" width="100%" />
 
 <h1><a id="features"></a>Features</h1>
 
