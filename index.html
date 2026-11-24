@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>MusoPhone: a YouTube Music client for Android</title>
-<meta name="description" content="Word-synced lyrics, lossless audio and bit-perfect USB output in a YouTube Music client made for Android.">
+<title>MusoPhone — Free, Ad-Free Open-Source YouTube Music Client</title>
+<meta name="description" content="MusoPhone is a free, ad-free, open-source YouTube Music client for Android, with simple Google sign-in, synced lyrics, beautiful playback and more.">
 <meta name="theme-color" content="#000000">
 <meta name="color-scheme" content="dark">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,7 +26,29 @@ a{color:inherit;text-decoration:none}
 :focus-visible{outline:2px solid var(--link);outline-offset:3px;border-radius:8px}
 .wrap{width:min(1080px,100% - 40px);margin-inline:auto}
 
-/* nav */
+/* intro animation */
+.intro{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;background:#000;animation:intro-away .8s cubic-bezier(.7,0,.2,1) 1.65s forwards;pointer-events:none}
+.intro-inner{text-align:center;animation:intro-pop .9s cubic-bezier(.2,.8,.2,1) both}
+.intro-mark{width:68px;height:68px;border-radius:20px;margin:0 auto 18px;box-shadow:0 12px 48px rgba(255,255,255,.12);animation:intro-mark .9s cubic-bezier(.2,.8,.2,1) both}
+.intro-name{font-size:clamp(2rem,7vw,3.4rem);font-weight:700;letter-spacing:-.06em}
+.intro-line{height:2px;width:0;background:#f5f5f7;margin:14px auto 0;animation:intro-line .7s ease .35s forwards}
+@keyframes intro-pop{from{opacity:0;transform:translateY(18px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes intro-mark{from{opacity:0;transform:scale(.65) rotate(-12deg)}to{opacity:1;transform:scale(1) rotate(0)}}
+@keyframes intro-line{to{width:100%}}
+@keyframes intro-away{to{opacity:0;visibility:hidden}}
+.hero-badges{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin:24px 0 12px}
+.hero-badges span{font-size:.68rem;font-weight:700;letter-spacing:.1em;color:#d2d2d7;border:1px solid #3a3a3c;border-radius:999px;padding:7px 11px;background:rgba(255,255,255,.045)}
+.eyebrow{font-size:.75rem;letter-spacing:.16em;font-weight:700;color:var(--mute);margin-bottom:18px}
+.feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:42px}
+.feature{padding:25px 22px;border:1px solid #29292c;border-radius:22px;background:linear-gradient(145deg,#151517,#090909)}
+.feature-icon{width:38px;height:38px;display:grid;place-items:center;border-radius:12px;background:#242427;color:#fff;font-size:1.15rem;font-weight:700;margin-bottom:22px}
+.feature h3{font-size:1.12rem;letter-spacing:-.025em}
+.feature p{font-size:.93rem;color:#a1a1a6;line-height:1.5;margin-top:9px}
+@media(max-width:800px){.feature-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.feature-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.intro{display:none}}
+
+ /* nav */
 .nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:rgba(0,0,0,.72);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(255,255,255,.08)}
 .nv{height:48px;display:flex;align-items:center;justify-content:space-between;gap:20px;width:min(1080px,100% - 40px);margin-inline:auto;font-size:.8125rem}
 .brand{display:flex;align-items:center;gap:9px;font-weight:600;font-size:.9375rem}
@@ -124,11 +146,19 @@ footer b,footer a{color:#1d1d1f}footer a:hover{text-decoration:underline}
 </style>
 </head>
 <body>
+<div class="intro" aria-hidden="true">
+  <div class="intro-inner">
+    <img class="intro-mark" data-i alt="">
+    <div class="intro-name">MusoPhone</div>
+    <div class="intro-line"></div>
+  </div>
+</div>
+
 
 <nav class="nav"><div class="nv">
   <a class="brand" href="#top"><img data-i alt="" width="24" height="24">MusoPhone</a>
-  <div class="nl"><a href="#lyrics">Lyrics</a><a href="#sound">Sound</a><a href="#blend">Crossfade</a><a href="#specs">Specs</a></div>
-  <a class="btn sm" href="https://github.com/Alshahriar-07/Musophone/releases">Download</a>
+  <div class="nl"><a href="#about">About</a><a href="#lyrics">Lyrics</a><a href="#sound">Sound</a><a href="#blend">Crossfade</a><a href="#specs">Specs</a></div>
+  <a class="btn sm" href="/api/download">Download</a>
 </div></nav>
 
 <header class="hero" id="top">
@@ -136,7 +166,7 @@ footer b,footer a{color:#1d1d1f}footer a:hover{text-decoration:underline}
   <h1>Every word.<br>Every bit.</h1>
   <p class="sub">A YouTube Music client for Android with word-synced lyrics, lossless audio and bit-perfect USB output.</p>
   <div class="cta">
-    <a class="btn" href="https://github.com/Alshahriar-07/Musophone/releases">Download APK</a>
+    <a class="btn" href="/api/download">Download APK</a>
     <a class="more" href="#lyrics">See how it works</a>
   </div>
   <div class="tracks" role="group" aria-label="Choose a track to preview"></div>
@@ -159,6 +189,20 @@ footer b,footer a{color:#1d1d1f}footer a:hover{text-decoration:underline}
 </header>
 
 <main>
+  <section class="overview" id="about">
+    <div class="wrap">
+      <p class="eyebrow">A BETTER WAY TO LISTEN</p>
+      <h2>Everything you need.<br><span>Nothing getting in the way.</span></h2>
+      <p class="lead">MusoPhone is an independent YouTube Music client built around a simple idea: your music should come first.</p>
+      <div class="feature-grid">
+        <article class="feature"><div class="feature-icon">✦</div><h3>Completely ad-free</h3><p>No third-party ads interrupting your listening. Just open the app, choose your music and press play.</p></article>
+        <article class="feature"><div class="feature-icon">⌘</div><h3>Open source</h3><p>Free software released under the GNU General Public License v3.0. Explore the code, inspect it and contribute.</p></article>
+        <article class="feature"><div class="feature-icon">G</div><h3>Simple Google sign-in</h3><p>Sign in with your Google account to connect your YouTube Music experience without a complicated setup.</p></article>
+        <article class="feature"><div class="feature-icon">♫</div><h3>YouTube Music client</h3><p>Discover and enjoy your YouTube Music library through a dedicated Android music-player experience.</p></article>
+      </div>
+    </div>
+  </section>
+
   <section class="say">
     <div class="wrap">
       <h2>Most players show you a list. <span>MusoPhone shows you the song.</span></h2>
@@ -227,9 +271,9 @@ footer b,footer a{color:#1d1d1f}footer a:hover{text-decoration:underline}
 <div class="get" id="download">
   <img data-i alt="" width="88" height="88">
   <h2>Get MusoPhone.</h2>
-  <p>The latest signed APK for Android.</p>
+  <p>The latest Android APK. Free, open-source and ad-free.</p>
   <div class="cta">
-    <a class="btn" href="https://github.com/Alshahriar-07/Musophone/releases">Download APK</a>
+    <a class="btn" href="/api/download">Download APK</a>
     <a class="more" href="https://github.com/Alshahriar-07/Musophone" target="_blank" rel="noopener">View on GitHub</a>
   </div>
   <small>To install, allow “Install unknown apps” for the browser or file manager you downloaded it with.</small>
