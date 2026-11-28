@@ -1,24 +1,19 @@
 // Vercel Serverless Function
 // Set DLINK=https://your-hosted-apk-url in Vercel Project Environment Variables.
+// If DLINK is missing or invalid, visitors are sent to GitHub Releases instead of an error page.
+
+const FALLBACK = "https://github.com/Alshahriar-07/Musophone/releases";
 
 module.exports = (req, res) => {
-  const downloadUrl = process.env.DLINK;
-
-  if (!downloadUrl) {
-    return res.status(503).send(
-      "Download is not configured yet. Please try again later."
-    );
-  }
-
+  let target = FALLBACK;
   try {
-    const parsed = new URL(downloadUrl);
-
-    if (!["https:", "http:"].includes(parsed.protocol)) {
-      return res.status(500).send("Invalid DLINK configuration.");
-    }
-
-    return res.redirect(302, parsed.toString());
+    const parsed = new URL(process.env.DLINK);
+    if (["https:", "http:"].includes(parsed.protocol)) target = parsed.toString();
+    else console.error("DLINK must be an http(s) URL.");
   } catch {
-    return res.status(500).send("Invalid DLINK configuration.");
+    console.error("DLINK is not set or is not a valid URL.");
   }
+  res.setHeader("Cache-Control", "no-store");
+  res.setHeader("X-Robots-Tag", "noindex");
+  return res.redirect(302, target);
 };

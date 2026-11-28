@@ -1,137 +1,51 @@
-<div align="center">
+# MusoPhone website
 
-<br/>
-<br/>
+Static site for <https://musophone.vercel.app/>, deployed on Vercel. Created by
+[Al Shahriar Sowan](https://alshahriarsayon.vercel.app/), published by Eagox Studio.
 
-<img src="assets/icon.png" alt="MusoPhone app icon" width="200" />
+## Install and run
 
-# MusoPhone
+Node 18 or newer. There are no dependencies to install.
 
-### Aesthetic YouTube Music Client
+```bash
+npm run dev      # http://localhost:3000  (set PORT to change)
+npm run build    # production check: syntax, JSON, JSON-LD, anchors, local files
+```
 
-<br/>
+There is no compile step and no output folder: Vercel serves the project root
+and runs `api/download.js` as a function. Use the "Other" framework preset and
+leave the output directory empty.
 
-[![Latest release](https://img.shields.io/github/v/release/Alshahriar-07/Musophone?style=for-the-badge&labelColor=0d1117)](https://github.com/Alshahriar-07/Musophone/releases)
-[![License](https://img.shields.io/github/license/Alshahriar-07/Musophone?style=for-the-badge&labelColor=0d1117)](https://github.com/Alshahriar-07/Musophone/blob/main/LICENSE)
-[![Downloads](https://img.shields.io/github/downloads/Alshahriar-07/Musophone/total?style=for-the-badge&labelColor=0d1117)](https://github.com/Alshahriar-07/Musophone/releases)
-[![Website](https://img.shields.io/badge/Website-musophone.vercel.app-0d1117?style=for-the-badge)](https://musophone.vercel.app)
-[![Web Player](https://img.shields.io/badge/Web%20Player-musophone--web.vercel.app-0071e3?style=for-the-badge)](https://musophone-web.vercel.app)
+## Files you must add
 
-<br/>
+| URL path used by the site | Put files in | Expected files |
+|---|---|---|
+| `/web/assets/` | `web/assets/` or `web-assets/` | `web-player`, `web-lyrics`, `web-home`, `web-extensions`, `web-about`, each `.png` (`.webp` optional, preferred when present) |
+| `/assets/` | `assets/` or `asset/` | `MusoPhoneBanner.png` (1672×941), `icon.png` (1024×1024) |
+| `/` | project root | `favicon.ico`, `icon-192.png`, `icon-256.png`, `apple-touch-icon.png` |
 
-[**Download**](#download) · [**Web Player**](https://musophone-web.vercel.app) · [**Features**](#features) · [**Contributing**](#contributing) · [**Disclaimer**](#disclaimer)
+`vercel.json` rewrites the first column to the `web-assets/` and `asset/`
+spellings when the file is not at the original path. Names are case-sensitive.
+Screenshots are shown at about 1870×1000. Without them the showcase displays a
+plain "preview is unavailable" notice.
 
-<br/>
+`img/` (app screenshots, covers, icon) was extracted from the previous inline
+images and is part of the source.
 
-</div>
+## Remaining manual steps
 
-> [!IMPORTANT]
-> MusoPhone is not affiliated with, endorsed by, or connected to YouTube or Google in any way. Use it at your own discretion.
+1. Add the files above, then run `npm run build` until it reports 0 awaiting.
+2. In Vercel, set `DLINK` to the APK URL. Without it, Download goes to GitHub Releases.
+3. Search Console: `google21a248609224cf2d.html` is included for the HTML-file
+   method. The old `google-site-verification` meta tag holds the same name, which
+   is not the format of a meta-tag token; if you use the meta method, replace it
+   with the token Search Console gives you.
+4. Submit `https://musophone.vercel.app/sitemap.xml`. Indexing and ranking are not guaranteed.
+5. After deploying, run Lighthouse or PageSpeed Insights on the live URL.
 
----
+## Changing things
 
-<div align="center">
-
-<img src="assets/MusoPhoneBanner.png" alt="MusoPhone banner" width="100%" />
-
-<h1><a id="features"></a>Features</h1>
-
-<table>
-  <tr>
-    <td width="50%" valign="top">
-
-#### Playback
-- **Search, browse and play** anything available on YouTube Music.
-- **Hi-Res lossless audio** — FLAC/ALAC from a configured module source, with YouTube Music as fallback.
-- **Gapless playback with true crossfade**, adjustable 0–12s.
-- **Automix [Beta]** — DJ-style transitions with beat-matching and tempo-stretching.
-- **Offline downloads** — save tracks with embedded metadata.
-- **Local music library** integration.
-- **Background playback** via a proper foreground media session.
-- **Apple-like lyrics animation** — credit to [binimum](https://github.com/binimum/am-lyrics).
-
-#### Connectivity & Accounts
-- **Sign in with your Google account** for personalized content.
-- **Spotify integration** — connect your account to play your playlists and Liked Songs.
-- **Discord Rich Presence** — in-app login, live track/artist/album and progress.
-- **Scrobbling** to Last.fm and ListenBrainz.
-- **Pluggable sources** — add, edit, test and health-check module sources.
-
-    </td>
-    <td width="50%" valign="top">
-
-#### Experience
-- **Animated album canvas** — motion artwork on the now-playing screen.
-- **Word-synced lyrics** — word/syllable-level highlighting from multiple sources.
-- **Lyrics providers** — credit to [lrc.red](https://lrc.red), [BiniLyrics](https://github.com/binimum), [BetterLyrics](https://github.com/better-lyrics/better-lyrics), [PaxSenix](https://lyrics.paxsenix.org), [LyricsPlus](https://github.com/ibratabian17/YouLyPlus), [SimpMusic](https://github.com/maxrave-dev/SimpMusic), [Unison](https://unison.boidu.dev), [Megalobiz](https://www.megalobiz.com), [KuGou](https://www.kugou.com), [LRCLIB](https://lrclib.net), [Musixmatch](https://www.musixmatch.com) and [Genius](https://genius.com).
-- **Dynamic, artwork-driven theming** — Material palette extracted from album art.
-- **Frosted-glass UI** — Telegram-style translucent bars via Haze, Material 3 theming.
-
-#### Controls & Tweaks
-- **Per-network audio quality** — separate quality ceilings for Wi-Fi and mobile data.
-- **Playback speed control** (0.5×–2.0×) and **skip silence**.
-- **Sleep timer** — fixed presets or "stop after this track".
-- **System equalizer** integration.
-- **Bit-perfect USB exclusive output** — sends lossless tracks to a USB DAC unchanged, at each track's own rate and bit depth. Thanks to [Mornye](https://github.com/mornyeapp/Mornye) for the reference.
-- **Stats for nerds** — codec, bit depth, sample rate, and more on the now-playing screen.
-
-    </td>
-  </tr>
-</table>
-
-</div>
-
----
-
-<div align="center">
-
-<h1><a id="download"></a>Download</h1>
-
-<a href="https://github.com/Alshahriar-07/Musophone/releases" target="_blank" rel="noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/JMcrafter26/badges@main/src/assets/supported/android/cozy.svg" alt="Download for Android" height="55"/></a>
-
-Grab the latest signed APK from the [Releases](https://github.com/Alshahriar-07/Musophone/releases) page. Sideloading requires enabling "Install unknown apps" for whichever app you download it with.
-
-Project website: <https://musophone.vercel.app> · Web Player: <https://musophone-web.vercel.app>
-
-</div>
-
----
-
-<div align="center">
-
-<h1><a id="contributing"></a>Contributing</h1>
-
-We welcome contributions to MusoPhone! Please review our [Contributing Guide](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md) before submitting a Pull Request.
-
-[**Contributing Guide**](CONTRIBUTING.md) · [**Code of Conduct**](CODE_OF_CONDUCT.md) · [**Maintainers**](MAINTAINERS.md) · [**Additional Docs**](ADDITIONAL.md)
-
-### Thanks to all contributors ❤
-
-Contributors to MusoPhone are credited in [Credit.md](Credit.md).
-
-</div>
-
----
-
-<div align="center">
-
-<h1><a id="disclaimer"></a>Disclaimer & Legal Notice</h1>
-
-MusoPhone is an independent, community-driven third-party audio player and client. It is **not** associated with Google LLC, YouTube Music, Deezer, Telegram, or any of their parent companies.
-
-- **No Media Hosting:** MusoPhone does not host, upload, or store copyrighted music files. It operates strictly as an interface to scan local device storage or stream media directly from public, public-facing, or user-authenticated APIs.
-- **Fair Use & API Usage:** This software is created solely for personal research, educational, and fair-use purposes. The user is entirely responsible for ensuring their usage aligns with their local copyright laws and YouTube Terms of Service.
-- **No Ad-Blocking Guarantee:** While MusoPhone focuses on providing a clean listening environment, it does not guarantee permanent bypasses or modifications to commercial third-party platform conditions.
-- **Copyleft:** MusoPhone is free software under the GPLv3. The license does not let anyone forbid others from selling or redistributing copies, but any distribution must come with the Corresponding Source under the same license.
-
-</div>
-
----
-
-<div align="center">
-
-<h1><a id="license"></a>License</h1>
-
-This project is licensed under the **GNU General Public License v3.0 (GPLv3)**. See the [LICENSE](LICENSE) file for details.
-
-</div>
+- After editing `css/style.css` or `js/main.js`, no cache busting is needed
+  (they revalidate on each visit).
+- Images in `img/` are cached for 30 days; rename a file when you replace it.
+- Intro timing lives in `--t0` (CSS) and `T0` (JS); keep them equal.
