@@ -5,10 +5,10 @@
   "description": "Official MusoPhone website",
   "author": "Al Shahriar Sowan (https://alshahriarsayon.vercel.app/)",
   "license": "GPL-3.0-only",
-  "engines": { "node": ">=18" },
+  "engines": { "node": "22.x" },
   "scripts": {
     "dev": "node scripts/dev.js",
-    "build": "node scripts/check.js",
+    "build": "node scripts/build.js",
     "check": "node scripts/check.js"
   }
 }
