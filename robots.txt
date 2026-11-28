@@ -1,5 +1,28 @@
 User-agent: *
 Allow: /
+Allow: /css/
+Allow: /js/
+Allow: /assets/
+Allow: /web/assets/
+Allow: /Web-assets/
+Disallow: /api/download
 Disallow: /.env
+
+User-agent: Googlebot
+Allow: /
+Allow: /css/
+Allow: /js/
+Allow: /assets/
+Allow: /web/assets/
+Allow: /Web-assets/
+Disallow: /api/download
+
+User-agent: Googlebot-Image
+Allow: /assets/
+Allow: /web/assets/
+Allow: /Web-assets/
+Allow: /favicon.ico
+Allow: /icon-192.png
+Allow: /apple-touch-icon.png
 
 Sitemap: https://musophone.vercel.app/sitemap.xml

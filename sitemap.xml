@@ -2,10 +2,43 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://musophone.vercel.app/</loc>
-    <lastmod>2026-11-24</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-11-28</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <image:image><image:loc>https://musophone.vercel.app/assets/MusoPhoneBanner.png</image:loc></image:image>
-    <image:image><image:loc>https://musophone.vercel.app/assets/icon.png</image:loc></image:image>
+    <image:image>
+      <image:loc>https://musophone.vercel.app/assets/MusoPhoneBanner.png</image:loc>
+      <image:title>MusoPhone — Premium Android and Web Music Player</image:title>
+      <image:caption>Aesthetic, free and open-source YouTube Music client by Al Shahriar Sowan and Eagox Studio</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://musophone.vercel.app/assets/icon.png</image:loc>
+      <image:title>MusoPhone Music Player Official App Icon</image:title>
+      <image:caption>MusoPhone Official Icon by Eagox Studio</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://musophone.vercel.app/web/assets/web-player.png</image:loc>
+      <image:title>MusoPhone Web Player — Now Playing Interface</image:title>
+      <image:caption>MusoPhone Web Player lossless playback interface with album artwork and controls</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://musophone.vercel.app/web/assets/web-lyrics.png</image:loc>
+      <image:title>MusoPhone Web Player — Synced Karaoke Lyrics</image:title>
+      <image:caption>MusoPhone Web Player real-time word-by-word synced lyrics slide panel</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://musophone.vercel.app/web/assets/web-home.png</image:loc>
+      <image:title>MusoPhone Web Player — Home &amp; Discovery Hub</image:title>
+      <image:caption>MusoPhone Web Player discovery hub with Listen Now, recommendations, and library</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://musophone.vercel.app/web/assets/web-extensions.png</image:loc>
+      <image:title>MusoPhone Web Player — Extensions &amp; Sources</image:title>
+      <image:caption>MusoPhone Web Player pluggable module source manager</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://musophone.vercel.app/web/assets/web-about.png</image:loc>
+      <image:title>MusoPhone Web Player — About &amp; Open Source License</image:title>
+      <image:caption>MusoPhone Web Player project credits, version info, and GPLv3 license</image:caption>
+    </image:image>
   </url>
 </urlset>

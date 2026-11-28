@@ -15,10 +15,11 @@
 [![License](https://img.shields.io/github/license/Alshahriar-07/Musophone?style=for-the-badge&labelColor=0d1117)](https://github.com/Alshahriar-07/Musophone/blob/main/LICENSE)
 [![Downloads](https://img.shields.io/github/downloads/Alshahriar-07/Musophone/total?style=for-the-badge&labelColor=0d1117)](https://github.com/Alshahriar-07/Musophone/releases)
 [![Website](https://img.shields.io/badge/Website-musophone.vercel.app-0d1117?style=for-the-badge)](https://musophone.vercel.app)
+[![Web Player](https://img.shields.io/badge/Web%20Player-musophone--web.vercel.app-0071e3?style=for-the-badge)](https://musophone-web.vercel.app)
 
 <br/>
 
-[**Download**](#download) · [**Features**](#features) · [**Contributing**](#contributing) · [**Disclaimer**](#disclaimer)
+[**Download**](#download) · [**Web Player**](https://musophone-web.vercel.app) · [**Features**](#features) · [**Contributing**](#contributing) · [**Disclaimer**](#disclaimer)
 
 <br/>
 
@@ -90,7 +91,7 @@
 
 Grab the latest signed APK from the [Releases](https://github.com/Alshahriar-07/Musophone/releases) page. Sideloading requires enabling "Install unknown apps" for whichever app you download it with.
 
-Project website: <https://musophone.vercel.app>
+Project website: <https://musophone.vercel.app> · Web Player: <https://musophone-web.vercel.app>
 
 </div>
 
